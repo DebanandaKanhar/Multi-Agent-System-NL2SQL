@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: mas_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: analytics
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d analytics"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  cassandra:
+    image: cassandra:4.1
+    container_name: mas_cassandra
+    environment:
+      CASSANDRA_CLUSTER_NAME: MASCluster
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 100M
+    ports:
+      - "9042:9042"
+
+  mongo:
+    image: mongo:7
+    container_name: mas_mongo
+    ports:
+      - "27017:27017"

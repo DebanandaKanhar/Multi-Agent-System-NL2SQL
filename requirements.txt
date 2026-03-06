@@ -1,0 +1,8 @@
+streamlit
+pandas
+plotly
+pyyaml
+python-dotenv
+psycopg[binary]
+pymongo
+cassandra-driver

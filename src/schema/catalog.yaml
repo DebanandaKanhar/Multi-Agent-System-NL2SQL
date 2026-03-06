@@ -1,0 +1,49 @@
+tables:
+  - source: postgresql
+    table: customers
+    primary_key: customer_id
+    columns:
+      - customer_id
+      - name
+      - region
+      - signup_date
+      - segment
+    semantic_tags:
+      - customers
+      - region
+      - segment
+      - signup
+
+  - source: cassandra
+    table: orders
+    primary_key: order_id
+    columns:
+      - order_id
+      - customer_id
+      - order_date
+      - amount
+      - product_category
+      - status
+    semantic_tags:
+      - orders
+      - sales
+      - amount
+      - revenue
+      - product
+
+  - source: mongodb
+    table: support_tickets
+    primary_key: ticket_id
+    columns:
+      - ticket_id
+      - customer_id
+      - created_at
+      - issue_type
+      - priority
+      - resolution_time_hours
+    semantic_tags:
+      - support
+      - tickets
+      - issues
+      - priority
+      - resolution
